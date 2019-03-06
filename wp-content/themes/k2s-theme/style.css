@@ -24,6 +24,19 @@ Text Domain: airi
 
 /* /Header */
 
+/* Menu */
+
+.main-navigation .menu-item .sub-menu .menu-item:after {
+  display: none;
+}
+
+/* /Menu */
+
 /* Content */
+
+.widget_categories li::before {
+  content: '\003e';
+  color: #f0437e;
+}
 
 /* /Content */
