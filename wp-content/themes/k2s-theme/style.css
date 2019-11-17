@@ -23,6 +23,10 @@ Text Domain: airi
   padding-left: 25px;
 }
 
+.main-navigation li {
+  padding: 0 18px;
+}
+
 .header-search a:hover:after {
   display: none;
 }

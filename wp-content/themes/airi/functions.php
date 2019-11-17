@@ -44,6 +44,9 @@ if ( ! function_exists( 'airi_setup' ) ) :
 
 		add_image_size( 'airi-720', 720 );
 		add_image_size( 'airi-360-360', 360, 360, true );
+		add_image_size( 'airi-850-485', 850, 485, true );
+		add_image_size( 'airi-390-280', 390, 280, true );
+		add_image_size( 'airi-969-485', 969, 485, true );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
@@ -247,12 +250,16 @@ add_action( 'elementor/elements/categories_registered', 'airi_block_category' );
 /**
  * Elementor skins
  */
-require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-google-maps-skin.php';
-require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-image-icon-box-skin.php';
-require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-athemes-blog-skin.php';
-require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-athemes-blog-skin-2.php';
-require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-athemes-blog-skin-3.php';
-require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-athemes-blog-skin-4.php';
+add_action( 'elementor/init', 'airi_add_elementor_skins' );
+function airi_add_elementor_skins(){
+	require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-google-maps-skin.php';
+	require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-image-icon-box-skin.php';
+	require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-athemes-blog-skin.php';
+	require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-athemes-blog-skin-2.php';
+	require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-athemes-blog-skin-3.php';
+	require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-athemes-blog-skin-4.php';
+	require get_template_directory() . '/inc/compatibility/elementor/skins/class-airi-athemes-blog-skin-6.php';
+}
 
 /**
  * Widgets
@@ -356,3 +363,10 @@ add_action( 'tgmpa_register', 'airi_register_required_plugins' );
  * Upsell
  */
 require get_template_directory() . '/inc/customizer/upsell/class-customize.php';
+
+/**
+ * Onboarding
+ */
+if ( current_user_can( 'manage_options' ) ) {
+	require get_template_directory() . '/inc/onboarding/class-airi-onboarding.php';
+}
