@@ -3,19 +3,12 @@
 /**
  * Skin for the Image-Icon box module
  */
-
-add_action( 'elementor/init', 'airi_register_image_icon_skin' );
-
-function airi_register_image_icon_skin() {
 	
 	class Airi_Image_Icon_Box_Skin extends Elementor\Skin_Base {
 		
 		public function __construct( Elementor\Widget_Base $parent ) {
 			parent::__construct( $parent );
-			add_action( 'elementor/element/athemes-image-icon-box/section_style_content/after_section_start', [ $this, 'register_controls' ] );
-			add_filter( 'elementor/widget/print_template', array( $this, 'skin_print_template' ), 10, 2 );
-
-		
+			add_action( 'elementor/element/athemes-image-icon-box/section_style_content/after_section_start', [ $this, 'register_controls' ] );		
 		}
      
 		public function get_id() {
@@ -100,7 +93,6 @@ function airi_register_image_icon_skin() {
 
 
 	}
-}
 
 add_action( 'elementor/widget/athemes-image-icon-box/skins_init', function( $widget ) {
    $widget->add_skin( new Airi_Image_Icon_Box_Skin( $widget ) );
